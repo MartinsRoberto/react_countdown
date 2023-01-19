@@ -1,0 +1,25 @@
+.home-container h2{
+  text-align: center;
+}
+
+.home-container label{
+  margin-bottom: 1em;
+  display: block;
+}
+
+.home-container input{
+  display: block;
+  box-sizing: border-box;
+  padding: 6px;
+  width: 100%;
+  margin-top: 0.5em;
+  border: none;
+  font-size: 1em;
+}
+
+.home-container button{
+  display: block;
+  margin: 1em auto;
+  padding: 10px 20px;
+  font-size: 1em;
+}
