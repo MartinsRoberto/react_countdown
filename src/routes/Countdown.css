@@ -3,7 +3,8 @@
   justify-content: center;
   text-align: center;
   text-transform: capitalize;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .countdown-container div{
@@ -15,7 +16,16 @@
   font-size: 3em;
 }
 
-.countdown-container h2{
+.countdown-container h3{
   margin: 0px;
   font-size: 1em;
+  font-weight: normal;
+}
+
+.countdown-container button{
+  display: block;
+  margin: 1em auto;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
 }
