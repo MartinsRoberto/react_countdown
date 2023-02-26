@@ -1,31 +1,32 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { CountdownContext } from '../context/CountdownContext'
 import useCountdown from '../hooks/useCountdown'
 import Counter from '../components/Counter'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom"
 
 import './Countdown.css'
 
 const Countdown = () => {
-  const {event, setEvent} = useContext(CountdownContext)
+  const { event, setEvent } = useContext(CountdownContext)
+  const navigate = useNavigate()
 
-  if (!event)  <Navigate to="/" replace />;
+  if (!event) {
+    navigate('/')
+    return
+  }
 
-  const [day, hour, minute, second] = useCountdown(event.date);
+  const [day, hour, minute, second] = useCountdown(event.date)
 
-  const navigate = useNavigate();
-
-  const handleNew = () =>{
-    localStorage.removeItem("event")
-    navigate("/");
+  const handleNew = () => {
+    navigate('/')
   }
 
   return (
     <div className='countdown-container'>
-      <Counter title="day" number={day}/>
-      <Counter title="hour" number={hour}/>
-      <Counter title="minute" number={minute}/>
-      <Counter title="second" number={second}/>
+      <Counter title="day" number={day && day} />
+      <Counter title="hour" number={hour} />
+      <Counter title="minute" number={minute} />
+      <Counter title="second" number={second} />
       <button onClick={handleNew}>Criar nova contagem</button>
     </div>
   )

@@ -7,33 +7,32 @@ const Home = () => {
   const [title, setTitle] = useState()
   const [date, setDate] = useState()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const { event, setEvent } = useContext(CountdownContext)
 
-  const handleSubmit = (e) => { 
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     const obj = { date, title }
-    setEvent(obj)
 
-    localStorage.setItem('event', JSON.stringify(obj));
+    const countdownDate = new Date(obj.date).getTime()
+    const now = new Date().getTime()
 
-    navigate("/countdown");
-  
-  }
-
-  useEffect(() => {
-    const obj = JSON.parse(localStorage.getItem('event'));
-    if (obj) {
-      setEvent(obj)
-      navigate("/countdown");
+    if (now > countdownDate) {
+      alert("Selecione uma data válida")
+      return
     }
-  }, []);
+
+    setEvent(obj)
+    navigate("/countdown")
+
+  }
 
   return (
     <div className="home-container">
       <h2>Crie uma contagem regressiva</h2>
+      <h5>Escolha um título e uma data no calendário abaixo para fazer a contagem.</h5>
       <form onSubmit={handleSubmit}>
         <label>
           <span>Título</span>
