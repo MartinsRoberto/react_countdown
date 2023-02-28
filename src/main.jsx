@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <App/>,
     children:[
       {
-        path: '/',
+        path: '/react_countdown',
         element: <Home/>
       },
       {
